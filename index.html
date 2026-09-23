@@ -4,8 +4,8 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧬</text></svg>"/>
-<title>Ankeet Kumar, PhD | Researcher in Viral Genomics &amp; Computational Biology, IISc Bangalore</title>
-<meta name="description" content="Dr Ankeet Kumar is a PhD from the Indian Institute of Science, Bangalore, working on rabies virus genomics, phylodynamics, and host-pathogen biology. Incoming postdoctoral researcher in clathrin mediated endocytosis."/>
+<title>Ankeet Kumar, PhD | Viral Genomics &amp; Wastewater Epidemiology Researcher, IISc Bangalore</title>
+<meta name="description" content="Ankeet Kumar completed his PhD in Biochemistry at the Indian Institute of Science, Bangalore, and currently works as a Senior Research Fellow on wastewater-based monitoring. Incoming postdoctoral researcher in clathrin mediated endocytosis."/>
 <meta name="keywords" content="Ankeet Kumar, Ankeet Kumar IISc, Ankeet Kumar virologist, Ankeet Kumar genomics, rabies virus genomics, clathrin mediated endocytosis, computational biology, phylodynamics, bioinformatics, IISc Bangalore PhD"/>
 <meta name="author" content="Ankeet Kumar"/>
 <meta name="robots" content="index, follow"/>
@@ -13,8 +13,8 @@
 
 <!-- Open Graph -->
 <meta property="og:type" content="profile"/>
-<meta property="og:title" content="Ankeet Kumar | Researcher in Viral Genomics &amp; Computational Biology"/>
-<meta property="og:description" content=" Researcher previously working IISc Bangalore working on rabies virus genomics, phylodynamics, and host-pathogen biology. Incoming postdoctoral researcher in clathrin mediated endocytosis."/>
+<meta property="og:title" content="Ankeet Kumar, PhD | Viral Genomics &amp; Wastewater Epidemiology Researcher"/>
+<meta property="og:description" content="Ankeet Kumar completed his PhD in Biochemistry at IISc Bangalore and currently works as a Senior Research Fellow on wastewater-based monitoring. Incoming postdoctoral researcher in clathrin mediated endocytosis."/>
 <meta property="og:url" content="https://ankeetkumar.com/"/>
 <meta property="og:image" content="https://ankeetkumar.com/Photo.png"/>
 <meta property="profile:first_name" content="Ankeet"/>
@@ -22,8 +22,8 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:title" content="Ankeet Kumar | PhD Researcher in Viral Genomics &amp; Computational Biology"/>
-<meta name="twitter:description" content="PhD researcher at IISc Bangalore working on rabies virus genomics, phylodynamics, and host-pathogen biology."/>
+<meta name="twitter:title" content="Ankeet Kumar, PhD | Viral Genomics &amp; Wastewater Epidemiology Researcher"/>
+<meta name="twitter:description" content="PhD in Biochemistry from IISc Bangalore, now a Senior Research Fellow on wastewater-based monitoring."/>
 <meta name="twitter:image" content="https://ankeetkumar.com/Photo.png"/>
 
 <script type="application/ld+json">
@@ -33,7 +33,7 @@
   "name": "Ankeet Kumar",
   "url": "https://ankeetkumar.com/",
   "image": "https://ankeetkumar.com/Photo.png",
-  "jobTitle": "PhD in Biochemistry",
+  "jobTitle": "Senior Research Fellow, Wastewater-Based Epidemiology",
   "worksFor": {
     "@type": "CollegeOrUniversity",
     "name": "Indian Institute of Science, Bangalore"
@@ -84,7 +84,7 @@
   --sh-sm: 0 1px 6px rgba(18,24,31,0.05);
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
 body { background: var(--cream); color: var(--ink); font-family: var(--sans); line-height: 1.7; overflow-x: hidden; }
 
 /* ─── NAV ─── */
@@ -119,8 +119,9 @@ nav {
 .nav-divider { width: 1px; height: 18px; background: var(--cream3); margin: 0 0.3rem; }
 
 /* ─── PAGES ─── */
-.page { display: none; padding-top: 60px; min-height: 100vh; }
-.page.active { display: block; }
+.page { scroll-margin-top: 76px; padding-bottom: 2rem; }
+.page:first-of-type { padding-top: 76px; }
+.page:not(:first-of-type) { padding-top: 4rem; border-top: 1px solid var(--cream3); }
 .wrap { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
 /* ─── TYPOGRAPHY ─── */
@@ -456,14 +457,14 @@ pre.code .s { color: #c3e88d; }
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <span class="nav-brand" onclick="showPage('home')">Ankeet <span>Kumar</span></span>
+    <a class="nav-brand" href="#page-home">Ankeet <span>Kumar</span></a>
     <ul class="nav-links">
-      <li><a href="#" onclick="showPage('home')" id="nav-home" class="active">Home</a></li>
-      <li><a href="#" onclick="showPage('about')" id="nav-about">Beyond Academics</a></li>
-      <li><a href="#" onclick="showPage('gallery')" id="nav-gallery">Photo Gallery</a></li>
-      <li><a href="#" onclick="showPage('research')" id="nav-research">Research</a></li>
-      <li><a href="#" onclick="showPage('publications')" id="nav-publications">Publications</a></li>
-      <li><a href="#" onclick="showPage('contact')" id="nav-contact">Contact</a></li>
+      <li><a href="#page-home" id="nav-home" class="active">Home</a></li>
+      <li><a href="#page-about" id="nav-about">Beyond Academics</a></li>
+      <li><a href="#page-gallery" id="nav-gallery">Photo Gallery</a></li>
+      <li><a href="#page-research" id="nav-research">Research</a></li>
+      <li><a href="#page-publications" id="nav-publications">Publications</a></li>
+      <li><a href="#page-contact" id="nav-contact">Contact</a></li>
     </ul>
     <div class="nav-divider"></div>
     <div class="nav-social">
@@ -487,28 +488,28 @@ pre.code .s { color: #c3e88d; }
 </nav>
 
 <!-- ═══════════════════ HOME ═══════════════════ -->
-<div id="page-home" class="page active">
+<div id="page-home" class="page">
   <div class="wrap">
 
     <!-- HERO -->
     <div class="home-hero">
       <div>
-        <div class="hero-eyebrow">PhD in Biochemistry · IISc Bangalore · October 2020 to June 2026</div>
+        <div class="hero-eyebrow">PhD in Biochemistry · IISc Bangalore · 2020 to 2026</div>
         <h1 class="hero-name">Ankeet<br><em>Kumar</em></h1>
-        <p class="hero-role">Evolutionary Biologist &amp; Curious Researcher</p>
-        <p class="hero-bio">I work at the intersection of <strong>genomics</strong>, <strong>phylodynamics</strong>, and <strong>host-pathogen biology</strong>, studying how RNA viruses evolve, spread, and adapt. My doctoral research at IISc focuses on the genomic landscape of the rabies virus, with broader interests in neglected zoonotic pathogens and One-Health frameworks. Next year I will begin my postdoctoral research in clathrin mediated endocytosis, and I am genuinely excited to start this new chapter.</p>
+        <p class="hero-role">Senior Research Fellow, Wastewater Epidemiology</p>
+        <p class="hero-bio">I completed my PhD in Biochemistry at IISc, where I worked at the intersection of <strong>genomics</strong>, <strong>phylodynamics</strong>, and <strong>host-pathogen biology</strong>, studying how RNA viruses evolve, spread, and adapt. My doctoral research focused on the genomic landscape of the rabies virus, with broader interests in neglected zoonotic pathogens and One-Health frameworks. Since July 2026, I have been working as a Senior Research Fellow on wastewater-based monitoring. Next year I will begin my postdoctoral research in clathrin mediated endocytosis, and I am genuinely excited to start this new chapter.</p>
         <div class="hero-tags">
           <span class="hero-tag">Rabies Virus</span>
           <span class="hero-tag">Comparative Genomics</span>
           <span class="hero-tag">Phylodynamics</span>
           <span class="hero-tag">One-Health</span>
-          <span class="hero-tag">Proteomics</span>
+          <span class="hero-tag">Wastewater Surveillance</span>
           <span class="hero-tag">Bioinformatics</span>
           <span class="hero-tag" style="border-color:var(--moss);color:var(--moss);background:rgba(15,118,110,0.06);">Incoming Postdoc, Clathrin Mediated Endocytosis</span>
         </div>
         <div class="hero-btns">
-          <a href="#" class="btn btn-moss" onclick="showPage('research')">Explore Research</a>
-          <a href="#" class="btn btn-out" onclick="showPage('contact')">Get in Touch</a>
+          <a href="#page-research" class="btn btn-moss">Explore Research</a>
+          <a href="#page-contact" class="btn btn-out">Get in Touch</a>
         </div>
       </div>
       <div class="photo-card">
@@ -523,18 +524,22 @@ pre.code .s { color: #c3e88d; }
 
     <!-- STATS -->
     <div class="stats-bar reveal">
-      <div class="stat-cell stat-clickable" onclick="showPage('publications')" title="View Publications"><div class="stat-n">7</div><div class="stat-l">Publications</div></div>
-      <div class="stat-cell stat-clickable" onclick="showPage('research')" title="View Conferences"><div class="stat-n">5</div><div class="stat-l">Conferences</div></div>
-      <div class="stat-cell stat-clickable" onclick="showPage('research')" title="View Awards"><div class="stat-n">5+</div><div class="stat-l">Awards</div></div>
-      <div class="stat-cell stat-clickable" onclick="showPage('gallery')" title="View Gallery"><div class="stat-n">9</div><div class="stat-l">Languages</div></div>
+      <div class="stat-cell stat-clickable" onclick="goTo('publications')" title="View Publications"><div class="stat-n">7</div><div class="stat-l">Publications</div></div>
+      <div class="stat-cell stat-clickable" onclick="goTo('research')" title="View Conferences"><div class="stat-n">5</div><div class="stat-l">Conferences</div></div>
+      <div class="stat-cell stat-clickable" onclick="goTo('research')" title="View Awards"><div class="stat-n">5+</div><div class="stat-l">Awards</div></div>
+      <div class="stat-cell stat-clickable" onclick="goTo('gallery')" title="View Gallery"><div class="stat-n">9</div><div class="stat-l">Languages</div></div>
     </div>
 
-    <!-- EDUCATION -->
+    <!-- EXPERIENCE & EDUCATION -->
     <div style="padding-bottom:3rem;">
-      <div class="eyebrow">Academic Background</div>
-      <h2>Education</h2>
+      <div class="eyebrow">Professional &amp; Academic Background</div>
+      <h2>Experience &amp; Education</h2>
       <div class="edu-card reveal">
-        <div class="edu-yr">Oct 2020 to June 2026</div>
+        <div class="edu-yr">Jul 2026 to Present</div>
+        <div><div class="edu-deg">Senior Research Fellow</div><div class="edu-inst">Indian Institute of Science (IISc), Bangalore</div><div class="edu-detail">Wastewater-based monitoring and surveillance</div></div>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-yr">Oct 2020 to Jun 2026</div>
         <div><div class="edu-deg">PhD in Biochemistry</div><div class="edu-inst">Indian Institute of Science (IISc), Bangalore</div><div class="edu-detail"><em>"Deciphering the genomic landscape of the rabies virus (RABV)"</em><br>Supervisor: Prof. Utpal Tatu</div></div>
       </div>
       <div class="edu-card reveal">
@@ -714,7 +719,7 @@ cat(<span class="s">"Genome alphabet:"</span>, bases)</pre><div class="code-out"
       <div class="eyebrow">Gallery</div>
       <h2>Photos, <em style="font-style:italic;color:var(--moss)">Year by Year</em></h2>
       <p class="photo-intro" style="margin:1rem auto 2rem;text-align:center;">Browse the photo gallery: field work, conferences, travels, and life at IISc, curated year by year from 2020 to 2026.</p>
-      <a href="#" class="btn btn-moss" onclick="showPage('gallery')">Open Photo Gallery →</a>
+      <a href="#page-gallery" class="btn btn-moss">Open Photo Gallery →</a>
     </div>
 
     <hr class="rule"/>
@@ -763,7 +768,7 @@ cat(<span class="s">"Genome alphabet:"</span>, bases)</pre><div class="code-out"
     <div style="padding:4rem 0 2rem;">
       <div class="eyebrow">Memories &amp; Moments</div>
       <h1>Photo <em style="font-style:italic;color:var(--moss)">Gallery</em></h1>
-      <p class="photo-intro">A visual journal of fieldwork, conferences, travels, and life at IISc, curated by year. Photos are loaded automatically by naming them <code style="font-family:var(--mono);font-size:0.82rem;background:var(--cream2);padding:0.1rem 0.4rem;border-radius:3px;">YYYY_PhotoN</code> (e.g. <code style="font-family:var(--mono);font-size:0.82rem;background:var(--cream2);padding:0.1rem 0.4rem;border-radius:3px;">2024_Photo1.jpg</code>).</p>
+      <p class="photo-intro">A visual journal of fieldwork, conferences, travels, and life at IISc, curated by year. Photos are loaded automatically from the <code style="font-family:var(--mono);font-size:0.82rem;background:var(--cream2);padding:0.1rem 0.4rem;border-radius:3px;">Photos</code> folder, named <code style="font-family:var(--mono);font-size:0.82rem;background:var(--cream2);padding:0.1rem 0.4rem;border-radius:3px;">YYYY_PhotoN</code> (e.g. <code style="font-family:var(--mono);font-size:0.82rem;background:var(--cream2);padding:0.1rem 0.4rem;border-radius:3px;">Photos/2024_Photo1.jpg</code>).</p>
     </div>
 
     <div id="gallery-years-container"></div>
@@ -843,8 +848,6 @@ cat(<span class="s">"Genome alphabet:"</span>, bases)</pre><div class="code-out"
         <h2>Collaborations,<br>queries &amp; conversations</h2>
         <p style="margin-top:0.7rem;">Open to scientific discussions, collaboration opportunities, and queries about my research. Whether you're a fellow researcher, a student curious about genomics, or someone passionate about One-Health, please reach out.</p>
         <div class="c-det"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg><a href="https://maps.google.com/?q=13.0219,77.5671" target="_blank" style="color:inherit;text-decoration:none;">Indian Institute of Science (IISc), C.V. Raman Ave, Bangalore, 560012</a></div>
-        <div class="c-det"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="caaba4a1afafbea1bfa7abb88aa3a3b9a9e4aba9e4a3a4">[email&#160;protected]</a></div>
-        <div class="c-det"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>+91 6006836150</div>
         <div class="social-links" style="margin-top:2rem;">
           <a href="https://scholar.google.com/citations?user=RRgqfYAAAAAJ&hl=en" target="_blank" class="slink"><svg viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.024 14.978 9.5 12 9.5c-2.977 0-5.548 1.524-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/></svg>Google Scholar: Ankeet Kumar<span class="slink-sub">scholar.google.com</span></a>
           <a href="https://github.com/ankeetkumar" target="_blank" class="slink"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>GitHub: ankeetkumar<span class="slink-sub">github.com</span></a>
@@ -862,34 +865,45 @@ cat(<span class="s">"Genome alphabet:"</span>, bases)</pre><div class="code-out"
         <div class="ff"><label>Institution</label><input type="text" id="cf-inst" placeholder="University of..."/></div>
         <div class="ff"><label>Subject</label><input type="text" id="cf-subject" placeholder="Collaboration · Query · Other"/></div>
         <div class="ff"><label>Message</label><textarea id="cf-message" placeholder="Your query or message..."></textarea></div>
-        <button class="btn btn-moss" onclick="handleSubmit()" style="width:100%;font-size:0.8rem;">Send Message →</button>
+        <button class="btn btn-moss" id="cf-submit" onclick="handleSubmit()" style="width:100%;font-size:0.8rem;">Send Message →</button>
         <p class="form-note">Messages go directly to Ankeet. Email not displayed publicly.</p>
       </div>
     </div>
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-// PAGE NAV
-let galleryInited = false;
-function showPage(id) {
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-  document.querySelectorAll(".nav-links a").forEach(a => a.classList.remove("active"));
-  document.getElementById("page-" + id).classList.add("active");
-  const nb = document.getElementById("nav-" + id);
-  if (nb) nb.classList.add("active");
-  window.scrollTo({ top: 0, behavior: "smooth" });
-  setTimeout(initReveal, 80);
-  if (id === "gallery" && !galleryInited) { galleryInited = true; renderGallery(); }
+<script>
+// SCROLL NAV — the site is one continuous scrolling page; this just smooth-scrolls
+// to a section (used by non-link elements like the stat cells).
+function goTo(id) {
+  const el = document.getElementById("page-" + id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+// SCROLLSPY — highlights the nav link for whichever section is currently in view
+function initScrollspy() {
+  const sections = document.querySelectorAll(".page");
+  const linkFor = id => document.getElementById("nav-" + id.replace("page-", ""));
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const link = linkFor(entry.target.id);
+      if (!link) return;
+      if (entry.isIntersecting) {
+        document.querySelectorAll(".nav-links a").forEach(a => a.classList.remove("active"));
+        link.classList.add("active");
+      }
+    });
+  }, { rootMargin: "-40% 0px -55% 0px", threshold: 0 });
+  sections.forEach(s => obs.observe(s));
 }
 
 // PROFILE PHOTO — static, no upload
 
-// GALLERY — static, no upload; photos named YYYY_PhotoN in same folder
+// GALLERY — static, no upload; photos live in the "Photos" folder, named YYYY_PhotoN
 const galleryYears = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
 
-// Map each year to expected photo filenames. 
-// You can update this list by adding files named e.g. "2024_Photo1.jpg" to the same directory.
+// Map each year to expected photo filenames inside the Photos folder.
+// You can update this list by adding files named e.g. "Photos/2024_Photo1.jpg".
 const galleryPhotos = {};
 (function() {
   const exts = ["jpg", "jpeg", "png", "webp"];
@@ -898,7 +912,7 @@ const galleryPhotos = {};
     // Pre-populate expected filenames — photos that exist will load; broken ones are hidden via onerror
     for (let i = 1; i <= 20; i++) {
       exts.forEach(ext => {
-        galleryPhotos[yr].push(`${yr}_Photo${i}.${ext}`);
+        galleryPhotos[yr].push(`Photos/${yr}_Photo${i}.${ext}`);
       });
     }
   });
@@ -913,7 +927,7 @@ function renderGallery() {
     sec.className = "year-section";
     sec.innerHTML = `<div class="year-lbl">${yr}</div>
       <div class="photo-grid" id="pgrid-${yr}"></div>
-      <div class="gallery-empty" id="gempty-${yr}" style="display:none;font-family:var(--mono);font-size:0.75rem;color:var(--ink-faint);padding:1.5rem 0 2rem;letter-spacing:0.04em;">No photos yet for ${yr}. Add files named <span style="color:var(--moss)">${yr}_Photo1.jpg</span>, <span style="color:var(--moss)">${yr}_Photo2.jpg</span>, etc.</div>`;
+      <div class="gallery-empty" id="gempty-${yr}" style="display:none;font-family:var(--mono);font-size:0.75rem;color:var(--ink-faint);padding:1.5rem 0 2rem;letter-spacing:0.04em;">No photos yet for ${yr}. Add files named <span style="color:var(--moss)">Photos/${yr}_Photo1.jpg</span>, <span style="color:var(--moss)">Photos/${yr}_Photo2.jpg</span>, etc.</div>`;
     c.appendChild(sec);
     // Try loading photos — hide those that 404
     let loaded = 0;
@@ -981,18 +995,43 @@ function filterPubs(type, btn) {
   document.querySelectorAll(".pub-card").forEach(c => { c.style.display = (type === "all" || c.dataset.type === type) ? "" : "none"; });
 }
 
-// CONTACT
-function handleSubmit() {
+// CONTACT — delivered via FormSubmit so it reaches Ankeet's inbox directly,
+// no visitor email client required and no address shown on the page.
+async function handleSubmit() {
   const name = document.getElementById("cf-name").value.trim();
   const email = document.getElementById("cf-email").value.trim();
   const inst = document.getElementById("cf-inst").value.trim();
   const subject = document.getElementById("cf-subject").value.trim();
   const msg = document.getElementById("cf-message").value.trim();
   if (!name || !email || !msg) { alert("Please fill in name, email and message."); return; }
-  const body = `From: ${name}${inst ? " ("+inst+")" : ""} <${email}>\n\n${msg}`;
-  window.location.href = `mailto:ankeetkumar9530@gmail.com?subject=${encodeURIComponent(subject||"Portfolio Query from "+name)}&body=${encodeURIComponent(body)}`;
-  document.getElementById("form-ok").style.display = "block";
-  ["cf-name","cf-email","cf-inst","cf-subject","cf-message"].forEach(id => document.getElementById(id).value = "");
+
+  const btn = document.getElementById("cf-submit");
+  const originalLabel = btn.textContent;
+  btn.textContent = "Sending...";
+  btn.disabled = true;
+
+  try {
+    const res = await fetch("https://formsubmit.co/ajax/ankeetkumar9530@gmail.com", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        Name: name,
+        Email: email,
+        Institution: inst || "Not provided",
+        Subject: subject || ("Portfolio query from " + name),
+        Message: msg,
+        _subject: "Portfolio message from " + name
+      })
+    });
+    if (!res.ok) throw new Error("Request failed");
+    document.getElementById("form-ok").style.display = "block";
+    ["cf-name","cf-email","cf-inst","cf-subject","cf-message"].forEach(id => document.getElementById(id).value = "");
+  } catch (err) {
+    alert("Something went wrong sending your message. Please try again in a moment, or reach out through one of the links on this page.");
+  } finally {
+    btn.textContent = originalLabel;
+    btn.disabled = false;
+  }
 }
 
 // REVEAL ON SCROLL
@@ -1004,7 +1043,7 @@ function initReveal() {
 }
 
 // Init on load
-window.addEventListener("load", () => { initReveal(); });
+window.addEventListener("load", () => { initReveal(); initScrollspy(); renderGallery(); });
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
 </script>
 
