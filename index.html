@@ -860,8 +860,8 @@ cat(<span class="s">"Genome alphabet:"</span>, bases)</pre><div class="code-out"
         <div class="form-title">Send a Message</div>
         <div class="form-sub">Private · Direct · No email shown publicly</div>
         <div id="form-ok">✓ Message sent! I'll get back to you soon.</div>
-        <div class="ff"><label>Your Name</label><input type="text" id="cf-name" placeholder="Dr Kumar X"/></div>
-        <div class="ff"><label>Email Address</label><input type="email" id="cf-email" placeholder="kumarx@university.edu"/></div>
+        <div class="ff"><label>Your Name</label><input type="text" id="cf-name" placeholder="Dr. Jane Smith"/></div>
+        <div class="ff"><label>Email Address</label><input type="email" id="cf-email" placeholder="jane@university.edu"/></div>
         <div class="ff"><label>Institution</label><input type="text" id="cf-inst" placeholder="University of..."/></div>
         <div class="ff"><label>Subject</label><input type="text" id="cf-subject" placeholder="Collaboration · Query · Other"/></div>
         <div class="ff"><label>Message</label><textarea id="cf-message" placeholder="Your query or message..."></textarea></div>
@@ -899,24 +899,50 @@ function initScrollspy() {
 
 // PROFILE PHOTO — static, no upload
 
-// GALLERY — static, no upload; photos live in the "Photos" folder, named YYYY_PhotoN
+// GALLERY — static, no upload; photos live in the "Photos" folder, named YYYY_PhotoN.
+// Loading is lazy (only starts once you actually scroll to the gallery) and each
+// slot is checked one file extension at a time, stopping a year's scan after a
+// couple of consecutive misses, so the site does not fire hundreds of probe
+// requests on every visit.
 const galleryYears = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
+const GALLERY_EXTS = ["jpg", "jpeg", "png", "webp"];
+const GALLERY_MAX_SLOTS = 30;
+const GALLERY_MAX_CONSECUTIVE_MISSES = 2;
 
-// Map each year to expected photo filenames inside the Photos folder.
-// You can update this list by adding files named e.g. "Photos/2024_Photo1.jpg".
-const galleryPhotos = {};
-(function() {
-  const exts = ["jpg", "jpeg", "png", "webp"];
-  galleryYears.forEach(yr => {
-    galleryPhotos[yr] = [];
-    // Pre-populate expected filenames — photos that exist will load; broken ones are hidden via onerror
-    for (let i = 1; i <= 20; i++) {
-      exts.forEach(ext => {
-        galleryPhotos[yr].push(`Photos/${yr}_Photo${i}.${ext}`);
-      });
-    }
-  });
-})();
+function tryLoadPhoto(yr, index, extIndex, onFound, onMiss) {
+  if (extIndex >= GALLERY_EXTS.length) { onMiss(); return; }
+  const src = `Photos/${yr}_Photo${index}.${GALLERY_EXTS[extIndex]}`;
+  const img = new Image();
+  img.onload = () => onFound(src);
+  img.onerror = () => tryLoadPhoto(yr, index, extIndex + 1, onFound, onMiss);
+  img.src = src;
+}
+
+function loadYearPhotos(yr) {
+  const grid = document.getElementById("pgrid-" + yr);
+  const empty = document.getElementById("gempty-" + yr);
+  let misses = 0;
+
+  function next(index) {
+    if (index > GALLERY_MAX_SLOTS || misses >= GALLERY_MAX_CONSECUTIVE_MISSES) return;
+    tryLoadPhoto(yr, index, 0,
+      (src) => {
+        misses = 0;
+        const thumb = document.createElement("div");
+        thumb.className = "photo-thumb gallery-thumb";
+        thumb.innerHTML = `<img src="${src}" alt="${src}" loading="lazy" decoding="async" onclick="openLightbox('${src}')"/>`;
+        grid.appendChild(thumb);
+        empty.style.display = "none";
+        next(index + 1);
+      },
+      () => {
+        misses++;
+        if (misses < GALLERY_MAX_CONSECUTIVE_MISSES) next(index + 1);
+      }
+    );
+  }
+  next(1);
+}
 
 function renderGallery() {
   const c = document.getElementById("gallery-years-container");
@@ -927,30 +953,9 @@ function renderGallery() {
     sec.className = "year-section";
     sec.innerHTML = `<div class="year-lbl">${yr}</div>
       <div class="photo-grid" id="pgrid-${yr}"></div>
-      <div class="gallery-empty" id="gempty-${yr}" style="display:none;font-family:var(--mono);font-size:0.75rem;color:var(--ink-faint);padding:1.5rem 0 2rem;letter-spacing:0.04em;">No photos yet for ${yr}. Add files named <span style="color:var(--moss)">Photos/${yr}_Photo1.jpg</span>, <span style="color:var(--moss)">Photos/${yr}_Photo2.jpg</span>, etc.</div>`;
+      <div class="gallery-empty" id="gempty-${yr}" style="display:block;font-family:var(--mono);font-size:0.75rem;color:var(--ink-faint);padding:1.5rem 0 2rem;letter-spacing:0.04em;">No photos yet for ${yr}. Add files named <span style="color:var(--moss)">Photos/${yr}_Photo1.jpg</span>, <span style="color:var(--moss)">Photos/${yr}_Photo2.jpg</span>, etc.</div>`;
     c.appendChild(sec);
-    // Try loading photos — hide those that 404
-    let loaded = 0;
-    galleryPhotos[yr].forEach(src => {
-      const img = new Image();
-      img.onload = function() {
-        loaded++;
-        const thumb = document.createElement("div");
-        thumb.className = "photo-thumb gallery-thumb";
-        thumb.innerHTML = `<img src="${src}" alt="${src}" loading="lazy" onclick="openLightbox('${src}')"/>`;
-        document.getElementById("pgrid-" + yr).appendChild(thumb);
-        document.getElementById("gempty-" + yr).style.display = "none";
-      };
-      img.onerror = function() {
-        // file doesn't exist — do nothing
-        if (document.getElementById("pgrid-" + yr) && document.getElementById("pgrid-" + yr).children.length === 0) {
-          document.getElementById("gempty-" + yr).style.display = "block";
-        }
-      };
-      img.src = src;
-    });
-    // Show empty state initially, will be hidden when first photo loads
-    document.getElementById("gempty-" + yr).style.display = "block";
+    loadYearPhotos(yr);
   });
 }
 
@@ -1043,7 +1048,25 @@ function initReveal() {
 }
 
 // Init on load
-window.addEventListener("load", () => { initReveal(); initScrollspy(); renderGallery(); });
+window.addEventListener("load", () => { initReveal(); initScrollspy(); initGalleryLazyLoad(); });
+
+// Only start probing for gallery photos once the visitor actually scrolls near
+// the Photo Gallery section, instead of on every page load.
+let galleryStarted = false;
+function initGalleryLazyLoad() {
+  const gallerySection = document.getElementById("page-gallery");
+  if (!gallerySection) return;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !galleryStarted) {
+        galleryStarted = true;
+        renderGallery();
+        obs.disconnect();
+      }
+    });
+  }, { rootMargin: "600px 0px" });
+  obs.observe(gallerySection);
+}
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
 </script>
 
