@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧬</text></svg>"/>
-<title>Ankeet Kumar, PhD | Evolutionary Biology and Genomics Researcher, IISc Bangalore</title>
+<title>Ankeet Kumar, PhD | Evolutionary Biology &amp; Genomics Researcher, IISc Bangalore</title>
 <meta name="description" content="Ankeet Kumar completed his PhD in Biochemistry at the Indian Institute of Science, Bangalore, and currently works as a Senior Research Fellow on wastewater-based monitoring. Incoming postdoctoral researcher in clathrin mediated endocytosis."/>
 <meta name="keywords" content="Ankeet Kumar, Ankeet Kumar IISc, Ankeet Kumar virologist, Ankeet Kumar genomics, rabies virus genomics, clathrin mediated endocytosis, computational biology, phylodynamics, bioinformatics, IISc Bangalore PhD"/>
 <meta name="author" content="Ankeet Kumar"/>
@@ -346,8 +346,12 @@ pre.code .s { color: #c3e88d; }
 .doda-text p { font-size: 0.92rem; color: var(--ink-light); line-height: 1.9; margin-bottom: 1rem; }
 .wakanda-pill { display: inline-flex; align-items: center; gap: 0.45rem; background: linear-gradient(135deg,var(--moss),var(--sky)); color: white; font-family: var(--mono); font-size: 0.63rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 0.85rem; border-radius: 20px; margin-bottom: 1.3rem; }
 .doda-viz { aspect-ratio: 4/5; border-radius: 8px; overflow: hidden; background: linear-gradient(160deg,#c5ddc2,#90ba8d,#5e9464,#356642); position: relative; box-shadow: var(--sh); }
-.mtn-svg { position: absolute; bottom: 0; left: 0; right: 0; }
-.doda-viz-lbl { position: absolute; bottom: 0; left: 0; right: 0; padding: 2.5rem 1.4rem 1.4rem; background: linear-gradient(to top,rgba(0,0,0,0.48),transparent); color: white; font-family: var(--serif); font-size: 0.98rem; font-style: italic; }
+.mtn-svg { position: absolute; bottom: 0; left: 0; right: 0; z-index: 1; }
+.doda-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.1s ease; z-index: 2; }
+.doda-slide.active { opacity: 1; }
+.doda-viz-lbl { position: absolute; bottom: 0; left: 0; right: 0; padding: 2.5rem 1.4rem 1.4rem; background: linear-gradient(to top,rgba(0,0,0,0.48),transparent); color: white; font-family: var(--serif); font-size: 0.98rem; font-style: italic; z-index: 3; }
+.doda-gallery-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(150px,1fr)); gap: 0.7rem; margin-top: 1.5rem; }
+.doda-gallery-empty { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-faint); padding: 1rem 0 0.5rem; letter-spacing: 0.04em; }
 .doda-facts { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.9rem; margin: 2.5rem 0; }
 .doda-fc { background: var(--white); border: 1px solid var(--cream3); border-radius: 6px; padding: 1.2rem; text-align: center; box-shadow: var(--sh-sm); transition: all 0.22s; }
 .doda-fc:hover { box-shadow: var(--sh); transform: translateY(-2px); }
@@ -404,6 +408,7 @@ pre.code .s { color: #c3e88d; }
 .cdot { width: 6px; height: 6px; border-radius: 50%; background: var(--moss); flex-shrink: 0; margin-top: 0.36rem; }
 .cdot.v { background: var(--sky); }
 .conf-nm { font-size: 0.84rem; font-weight: 500; }
+.conf-loc { font-size: 0.72rem; color: var(--ink-faint); margin-top: 0.2rem; }
 .conf-tp { font-family: var(--mono); font-size: 0.59rem; color: var(--ink-faint); margin-top: 0.1rem; }
 
 /* ─── CONTACT ─── */
@@ -735,8 +740,9 @@ cat(<span class="s">"Genome alphabet:"</span>, bases)</pre><div class="code-out"
           <p>Nestled deep in the Chenab valley of the Himalayas, <strong>Doda</strong> is a small district in Jammu &amp; Kashmir, perhaps unknown to much of the world, but absolutely everything to me.</p>
           <p>Surrounded by snow-capped peaks, dense cedar forests, crystal-clear rivers, and skies so unpolluted you can see every star, Doda is, without exaggeration, one of the most beautiful places on this planet.</p>
         </div>
-        <div class="doda-viz">
+        <div class="doda-viz" id="doda-viz">
           <svg class="mtn-svg" viewBox="0 0 800 300" fill="none"><path d="M0 300 L120 100 L220 200 L350 40 L480 180 L600 80 L720 160 L800 60 L800 300 Z" fill="rgba(255,255,255,0.14)"/><path d="M0 300 L80 180 L160 230 L280 120 L400 200 L520 130 L640 190 L760 110 L800 150 L800 300 Z" fill="rgba(255,255,255,0.08)"/></svg>
+          <div id="doda-slides"></div>
           <div class="doda-viz-lbl">Doda, Jammu &amp; Kashmir<br><span style="font-size:0.74rem;opacity:0.75;">Chenab Valley · ~1100m elevation</span></div>
         </div>
       </div>
@@ -749,6 +755,13 @@ cat(<span class="s">"Genome alphabet:"</span>, bases)</pre><div class="code-out"
         <div class="doda-fc"><div class="doda-fc-ico">🫀</div><div class="doda-fc-title">My Heartland</div><div class="doda-fc-text">Where I was born, raised, and will always return</div></div>
       </div>
       <div class="doda-quote reveal"><p>"In all my travels across laboratories and conferences, no view has ever matched sunrise over the mountains of Doda, golden light spilling over cedar forests, the Chenab shimmering below, the whole world perfectly quiet."</p><cite>Ankeet Kumar</cite></div>
+      <div class="reveal" style="padding-bottom:2rem;">
+        <div class="eyebrow">Doda, In Pictures</div>
+        <h2>Home <em style="font-style:italic;color:var(--moss)">Ground</em></h2>
+        <p class="photo-intro">Photos of Doda are loaded automatically from the <code style="font-family:var(--mono);font-size:0.82rem;background:var(--cream2);padding:0.1rem 0.4rem;border-radius:3px;">Photos/Doda</code> folder, named <code style="font-family:var(--mono);font-size:0.82rem;background:var(--cream2);padding:0.1rem 0.4rem;border-radius:3px;">Doda_PhotoN</code> (e.g. <code style="font-family:var(--mono);font-size:0.82rem;background:var(--cream2);padding:0.1rem 0.4rem;border-radius:3px;">Photos/Doda/Doda_Photo1.jpg</code>).</p>
+        <div class="doda-gallery-grid" id="doda-gallery-grid"></div>
+        <div class="doda-gallery-empty" id="doda-gallery-empty">No Doda photos yet. Add files named <span style="color:var(--moss)">Photos/Doda/Doda_Photo1.jpg</span>, <span style="color:var(--moss)">Photos/Doda/Doda_Photo2.jpg</span>, etc.</div>
+      </div>
       <div class="doda-body reveal" style="padding-bottom:5rem;">
         <div class="eyebrow">My Wakanda</div>
         <h2>A Heaven on <em style="font-style:italic;color:var(--moss)">Earth</em></h2>
@@ -806,8 +819,8 @@ cat(<span class="s">"Genome alphabet:"</span>, bases)</pre><div class="code-out"
     <div class="eyebrow">Scientific Community</div><h2>Conferences &amp; Workshops</h2>
     <div class="conf-cols">
       <div><div class="cg-title">// In Person</div>
-        <div class="conf-item reveal"><div class="cdot"></div><div><div class="conf-nm">EVBC: International Virus Bioinformatics Meeting (2025)</div><div class="conf-tp">Poster Pitch &amp; Presentation</div></div></div>
-        <div class="conf-item reveal"><div class="cdot"></div><div><div class="conf-nm">EMBO, Physical Virology: Across Length Scales (2025)</div><div class="conf-tp">Poster Presentation</div></div></div>
+        <div class="conf-item reveal"><div class="cdot"></div><div><div class="conf-nm">EVBC: International Virus Bioinformatics Meeting (2025)</div><div class="conf-tp">Poster Pitch &amp; Presentation</div><div class="conf-loc">🇵🇹 Lisbon, Portugal</div></div></div>
+        <div class="conf-item reveal"><div class="cdot"></div><div><div class="conf-nm">EMBO, Physical Virology: Across Length Scales (2025)</div><div class="conf-tp">Poster Presentation</div><div class="conf-loc">🇪🇸 Sant Feliu de Guíxols, Girona, Spain</div></div></div>
       </div>
       <div><div class="cg-title">// Virtual</div>
         <div class="conf-item reveal"><div class="cdot v"></div><div><div class="conf-nm">Wellcome, Applied Bioinformatics &amp; Public Health Microbiology (2025)</div><div class="conf-tp">Poster Presentation</div></div></div>
@@ -899,22 +912,22 @@ function initScrollspy() {
 
 // PROFILE PHOTO — static, no upload
 
-// GALLERY — static, no upload; photos live in the "Photos" folder, named YYYY_PhotoN.
-// Loading is lazy (only starts once you actually scroll to the gallery) and each
-// slot is checked one file extension at a time, stopping a year's scan after a
-// couple of consecutive misses, so the site does not fire hundreds of probe
-// requests on every visit.
+// GALLERY — static, no upload; photos live in the "Photos" folder, named YYYY_PhotoN
+// (or Photos/Doda/Doda_PhotoN for the Doda section). Everything loads immediately on
+// page load, no click or scroll needed. Each slot is checked one file extension at a
+// time, and a scan stops after a couple of consecutive misses, so the site still does
+// not fire hundreds of pointless probe requests when a year or folder is empty.
 const galleryYears = [2026, 2025, 2024, 2023, 2022, 2021, 2020];
 const GALLERY_EXTS = ["jpg", "jpeg", "png", "webp"];
 const GALLERY_MAX_SLOTS = 30;
 const GALLERY_MAX_CONSECUTIVE_MISSES = 2;
 
-function tryLoadPhoto(yr, index, extIndex, onFound, onMiss) {
+function tryLoadPhoto(basePath, extIndex, onFound, onMiss) {
   if (extIndex >= GALLERY_EXTS.length) { onMiss(); return; }
-  const src = `Photos/${yr}_Photo${index}.${GALLERY_EXTS[extIndex]}`;
+  const src = `${basePath}.${GALLERY_EXTS[extIndex]}`;
   const img = new Image();
   img.onload = () => onFound(src);
-  img.onerror = () => tryLoadPhoto(yr, index, extIndex + 1, onFound, onMiss);
+  img.onerror = () => tryLoadPhoto(basePath, extIndex + 1, onFound, onMiss);
   img.src = src;
 }
 
@@ -925,12 +938,12 @@ function loadYearPhotos(yr) {
 
   function next(index) {
     if (index > GALLERY_MAX_SLOTS || misses >= GALLERY_MAX_CONSECUTIVE_MISSES) return;
-    tryLoadPhoto(yr, index, 0,
+    tryLoadPhoto(`Photos/${yr}_Photo${index}`, 0,
       (src) => {
         misses = 0;
         const thumb = document.createElement("div");
         thumb.className = "photo-thumb gallery-thumb";
-        thumb.innerHTML = `<img src="${src}" alt="${src}" loading="lazy" decoding="async" onclick="openLightbox('${src}')"/>`;
+        thumb.innerHTML = `<img src="${src}" alt="${src}" loading="eager" decoding="async" onclick="openLightbox('${src}')"/>`;
         grid.appendChild(thumb);
         empty.style.display = "none";
         next(index + 1);
@@ -942,6 +955,55 @@ function loadYearPhotos(yr) {
     );
   }
   next(1);
+}
+
+// DODA GALLERY + SHUFFLING HERO IMAGE — probes Photos/Doda/Doda_PhotoN.*, fills the
+// "Doda, In Pictures" grid, and cross-fades through the same photos in the hero visual.
+const DODA_SLIDE_INTERVAL_MS = 4500;
+
+function loadDodaPhotos() {
+  const slidesBox = document.getElementById("doda-slides");
+  const grid = document.getElementById("doda-gallery-grid");
+  const empty = document.getElementById("doda-gallery-empty");
+  if (!slidesBox || !grid) return;
+
+  const found = [];
+  let current = 0;
+  let misses = 0;
+
+  function addSlide(src) {
+    const img = document.createElement("img");
+    img.className = "doda-slide";
+    img.src = src;
+    img.alt = "Doda, Jammu & Kashmir";
+    img.loading = "eager";
+    img.decoding = "async";
+    slidesBox.appendChild(img);
+    found.push(img);
+    if (found.length === 1) img.classList.add("active");
+
+    const thumb = document.createElement("div");
+    thumb.className = "photo-thumb gallery-thumb";
+    thumb.innerHTML = `<img src="${src}" alt="${src}" loading="eager" decoding="async" onclick="openLightbox('${src}')"/>`;
+    grid.appendChild(thumb);
+    empty.style.display = "none";
+  }
+
+  function next(index) {
+    if (index > GALLERY_MAX_SLOTS || misses >= GALLERY_MAX_CONSECUTIVE_MISSES) return;
+    tryLoadPhoto(`Photos/Doda/Doda_Photo${index}`, 0,
+      (src) => { misses = 0; addSlide(src); next(index + 1); },
+      () => { misses++; if (misses < GALLERY_MAX_CONSECUTIVE_MISSES) next(index + 1); }
+    );
+  }
+  next(1);
+
+  setInterval(() => {
+    if (found.length < 2) return;
+    found[current].classList.remove("active");
+    current = (current + 1) % found.length;
+    found[current].classList.add("active");
+  }, DODA_SLIDE_INTERVAL_MS);
 }
 
 function renderGallery() {
@@ -1048,25 +1110,7 @@ function initReveal() {
 }
 
 // Init on load
-window.addEventListener("load", () => { initReveal(); initScrollspy(); initGalleryLazyLoad(); });
-
-// Only start probing for gallery photos once the visitor actually scrolls near
-// the Photo Gallery section, instead of on every page load.
-let galleryStarted = false;
-function initGalleryLazyLoad() {
-  const gallerySection = document.getElementById("page-gallery");
-  if (!gallerySection) return;
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !galleryStarted) {
-        galleryStarted = true;
-        renderGallery();
-        obs.disconnect();
-      }
-    });
-  }, { rootMargin: "600px 0px" });
-  obs.observe(gallerySection);
-}
+window.addEventListener("load", () => { initReveal(); initScrollspy(); renderGallery(); loadDodaPhotos(); });
 document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
 </script>
 
